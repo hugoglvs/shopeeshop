@@ -1,0 +1,26 @@
+PETITS RAPPELS POUR MOI MEME
+
+Les attributs ARIA autorisent la modification des états et des propriétés des
+éléments tels que définis dans l'arbre d'accessibilité
+
+
+ATTRIBUTS:
+
+aria-hidden permet de cacher du contenu non-interactif de l'API d'accessibilité
+Il est utile d'ajouter aria-hidden="true" à un élément pour l'enlever de 
+l'arbre d'accessibilité par exemple pour:
+- du contenu décoratif (images, icones, logos)
+- du contenu dupliqué
+- du contenu offscreen ou replié (collapsed)
+
+viewBox définit la position et la dimension d'une fenêtre SVG dans 
+l'espace de l'utilisateur
+Les valeurs de viewBox sont une liste de 4 nombres: 
+min-x, min-y, width et height
+
+
+Lien vers l'explication du fonctionnement du tag <path> des <svg>:
+https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+
+Lien vers un site regroupant des SVG:
+https://www.svgrepo.com/
