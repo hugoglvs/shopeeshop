@@ -1,24 +1,27 @@
 <?php
-    //require("../db.php");
-    //$bdd = getDB();
-    $wd = explode("/", getcwd());
-    if (end($wd) != "goncalves") {
-        chdir("..");
+    if (end(explode('/', getcwd())) != 'goncalves') { // if parent folder isn't goncalves
+        include "../variables.php";
+    }
+    else {
+        include "variables.php";;
     }
 ?>
 
 <nav class="menu_wrapper">
         <div class="menu_bar">
-            <a href="index.php" title="Logo" class="logo">
+            <?php 
+                echo '<a href="http://'.$servername.':'.$port.'goncalves/index.php" title="Logo" class="logo">';
+            ?>
+            
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 483.1 483.1" xml:space="preserve">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier"> 
-                        <g> 
+                    <g id="SVGRepo_iconCarrier">
+                        <g>
                         <path d="M434.55,418.7l-27.8-313.3c-0.5-6.2-5.7-10.9-12-10.9h-58.6c-0.1-52.1-42.5-94.5-94.6-94.5s-94.5,42.4-94.6,94.5h-58.6 c-6.2,0-11.4,4.7-12,10.9l-27.8,313.3c0,0.4,0,0.7,0,1.1c0,34.9,32.1,63.3,71.5,63.3h243c39.4,0,71.5-28.4,71.5-63.3 C434.55,419.4,434.55,419.1,434.55,418.7z M241.55,24c38.9,0,70.5,31.6,70.6,70.5h-141.2C171.05,55.6,202.65,24,241.55,24z M363.05,459h-243c-26,0-47.2-17.3-47.5-38.8l26.8-301.7h47.6v42.1c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h141.2v42.1 c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h47.6l26.8,301.8C410.25,441.7,389.05,459,363.05,459z"></path> 
-                        </g> 
+                        </g>
                     </g>
-                </svg>                 
+                </svg>
             </a>
             <ul class="navigation">
                 <li>
@@ -35,7 +38,9 @@
                                     <path d="M12 18H12.01M9.2 21H14.8C15.9201 21 16.4802 21 16.908 20.782C17.2843 20.5903 17.5903 20.2843 17.782 19.908C18 19.4802 18 18.9201 18 17.8V6.2C18 5.0799 18 4.51984 17.782 4.09202C17.5903 3.71569 17.2843 3.40973 16.908 3.21799C16.4802 3 15.9201 3 14.8 3H9.2C8.0799 3 7.51984 3 7.09202 3.21799C6.71569 3.40973 6.40973 3.71569 6.21799 4.09202C6 4.51984 6 5.07989 6 6.2V17.8C6 18.9201 6 19.4802 6.21799 19.908C6.40973 20.2843 6.71569 20.5903 7.09202 20.782C7.51984 21 8.07989 21 9.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                                 <div class="item-title">
-                                    <a href="articles/iphone.html">
+                                    <?php
+                                    echo '<a href="http://'.$servername.':'.$port.'goncalves/articles/iphone.html">';
+                                    ?>
                                         <h3>iPhone</h3>
                                         <p>En voir plus sur notre sélection diPhones</p>
                                     </a>
@@ -49,7 +54,9 @@
                                     <path d="M13.5 22.21H8.7C7.71495 22.1943 6.77542 21.7926 6.08348 21.0913C5.39155 20.39 5.00249 19.4452 5 18.46V15.15C5 14.9511 5.07902 14.7603 5.21967 14.6197C5.36032 14.479 5.55109 14.4 5.75 14.4H16.5C16.6989 14.4 16.8897 14.479 17.0303 14.6197C17.171 14.7603 17.25 14.9511 17.25 15.15V18.46C17.2474 19.4537 16.8514 20.406 16.1487 21.1087C15.446 21.8114 14.4938 22.2074 13.5 22.21ZM6.5 15.9V18.46C6.49985 19.0482 6.73003 19.613 7.14123 20.0336C7.55244 20.4541 8.11197 20.6969 8.7 20.71H13.5C14.0967 20.71 14.669 20.4729 15.091 20.051C15.5129 19.629 15.75 19.0567 15.75 18.46V15.9H6.5Z" fill="#000000"/>
                                 </svg>
                                 <div class="item-title">
-                                    <a href="articles/plante.html">
+                                    <?php
+                                    echo '<a href="http://'.$servername.':'.$port.'goncalves/articles/plante.html">';
+                                    ?>
                                         <h3>Plantes vertes</h3>
                                         <p>En voir plus sur notre séléction de plantes vertes</p>
                                     </a>
@@ -59,10 +66,14 @@
                     </div>
                 </li>
                 <li>
-                    <a href="../phpmyadmin/index.php?route=/&route=%2F" target="_blank">Database</a>
+                    <?php
+                        echo '<a href="http://'.$servername.':'.$port.'phpmyadmin/index.php?route=/&route=%2F" target="_blank">Database</a>';
+                    ?>
                 </li>
                 <li>
-                    <a href="contact/contact.html" title="Contact">Contact</a>
+                <?php
+                    echo '<a href="http://'.$servername.':'.$port.'goncalves/contact/contact.html">Contact</a>';
+                ?>
                 </li>
             </ul>
         </div>

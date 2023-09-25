@@ -8,7 +8,8 @@
 
 <body>
 <?php
-include("../styles/navbar.php");
+require "../db.php";
+include "../styles/navbar.php";
 ?>
     
     
