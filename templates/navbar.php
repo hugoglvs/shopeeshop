@@ -72,14 +72,7 @@
                 </div>
             </li>
             <li>
-                <?php
-                    echo '<a href="http://'.$servername.':'.$port.'phpmyadmin" target="_blank">Database</a>';
-                ?>
-            </li>
-            <li>
-            <?php
-                echo '<a href="http://'.$servername.':'.$port.'/goncalves/contact/contact.html">Contact</a>';
-            ?>
+            <a href= <?php echo "http://$servername:$port/goncalves/contact/contact.php" ?>>Contact</a>';
             </li>
         </ul>
     </div>
