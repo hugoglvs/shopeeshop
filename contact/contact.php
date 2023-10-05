@@ -4,6 +4,7 @@
     <title>Contact</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/style.css">
+    <base href="http://localhost:8080/goncalves/">
 </head>
 <header>
     <h1>Contact</h1>
@@ -14,7 +15,7 @@
     ?>
     <main>
         <div class="img-container">
-            <img src="../images/hugo.jpeg" alt="Photo de Hugo GONÇALVES, créateur de ShopeeShop">
+            <img src="images/hugo.jpeg" alt="Photo de Hugo GONÇALVES, créateur de ShopeeShop">
         </div>
         <div class="caracteristics-container">
             <ul>
@@ -24,7 +25,7 @@
                 <li>Parcours professionnel: aucun</li>
                 <li>Passe temps: Rugby</li>
             </ul>
-        </div>  
+        </div>
     </main>
     <footer>
     <a href="../index.php">Retour</a>

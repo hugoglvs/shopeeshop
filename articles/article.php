@@ -4,6 +4,7 @@
     <title>Article</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/style.css">
+    <base href="http://localhost:8080/goncalves/">
 </head>
 
 <body>
@@ -11,18 +12,20 @@
 include "../templates/navbar.php";
 $id_art = $_GET['id_art'];
 
-$rep = $bdd->query('select * from Articles where id_art='.$id_art);
-$ligne = $rep->fetch();
+$sql = 'select * from Articles where id_art= ?';
+$sth = $conn->prepare($sql);
+$sth->execute([$id_art]);
+$row = $sth->fetch();
 
-$rep ->closeCursor();
+$sth ->closeCursor();
 
 ?>
 
 <main id="article">
-    <h1> <?php echo $ligne["nom"]; ?> </h1>
+    <h1> <?php echo $row["nom"]; ?> </h1>
     <div class="flex-container">
-        <img src= <?php echo '"http://'.$servername.':'.$port.'/goncalves//'.$ligne["url_photo"].'"'?> alt="Photo de l'article">
-        <p><?php echo $ligne["description"]?></p>
+        <img src= <?php echo $row["url_photo"]?> alt="Photo de l'article">
+        <p><?php echo $row["description"]?></p>
     </div>
 </main>
     

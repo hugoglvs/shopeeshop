@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
+    <base href="http://localhost:8080/goncalves/">
 </head>
 <body>
     
@@ -17,24 +18,29 @@
     <?php
         echo "<table>
                 <caption>Tableau de nos articles</caption>
-                <theader>
+                <thead>
                     <th>Nom</th>
                     <th>Identifiant</th>
                     <th>Prix (€)</th>
                     <th>Stock</th>
-                </theader>";
+                </thead>";
         echo "<tbody>";
-        $rep = $bdd->query('select * from Articles');
-        while ($ligne = $rep ->fetch()) {
-            echo "<tr><td><a href='articles/article.php?id_art=".$ligne['id_art']."'>".$ligne['nom']."</a></td>";
-            echo "<td>".$ligne['id_art']."</td>";
-            echo "<td>".$ligne['prix']."</td>";
-            echo "<td>".$ligne['quantite']."</td>";
+        $conn = getDB();
+        $sql = 'select * from articles';
+        $sth = $conn->prepare($sql);
+        $sth->execute();
+        while ($row = $sth->fetch()) {
+            echo "<tr><td><a href='articles/article.php?id_art=".$row['id_art']."'>".$row['nom']."</a></td>";
+            echo "<td>".$row['id_art']."</td>";
+            echo "<td>".$row['prix']."</td>";
+            echo "<td>".$row['quantite']."</td>";
         }
-        $rep ->closeCursor();
+        $sth->closeCursor();
         echo "</tbody>";
         echo "</table>";
     ?>
+
+    <a class="button" href="nouveau.php" >Nouveau client</a>
     </main>
 </body>
 </html>

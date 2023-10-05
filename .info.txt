@@ -18,6 +18,13 @@ l'espace de l'utilisateur
 Les valeurs de viewBox sont une liste de 4 nombres: 
 min-x, min-y, width et height
 
+## PDO
+
+PDO::prepare() prepares an SQL statement to be executed by the PDOStatement::execute() method.
+public PDO::prepare(string $query, array $options = []): PDOStatement|false
+
+PDO::exec() executes an SQL statement in a single function call, returning the number of rows affected by the statement.
+public PDOStatement::execute(?array $params = null): bool
 
 Lien vers l'explication du fonctionnement du tag <path> des <svg>:
 https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths

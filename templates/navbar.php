@@ -1,23 +1,18 @@
 
 <?php
-    $pathArray = explode('/', getcwd());
-        if (end($pathArray) != 'goncalves') { // if parent folder isn't goncalves
-        include "../variables.php";
-        require "../db.php";
-    }
-    else {
-        include "variables.php";;
-        require "db.php";
-    }
-    $bdd = getDB();
-    $rep = $bdd->query('select * from Articles');
-    $ligne = $rep ->fetch();
+$path = $_SERVER['DOCUMENT_ROOT'];
+    require_once $path.'/goncalves/db.php';
+    $conn = getDB();
+    $sql = "Select * from Articles";
+    $sth = $conn->prepare($sql);
+    $sth->execute();
+    $row = $sth->fetch();
 ?>
 
 <nav class="menu_wrapper">
     <div class="menu_bar">
         <?php
-            echo '<a href="http://'.$servername.':'.$port.'/goncalves/index.php" title="Logo" class="logo">';
+            echo '<a href="index.php" title="Logo" class="logo">';
         ?>
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 483.1 483.1" xml:space="preserve">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -44,7 +39,7 @@
                                 <path d="M12 18H12.01M9.2 21H14.8C15.9201 21 16.4802 21 16.908 20.782C17.2843 20.5903 17.5903 20.2843 17.782 19.908C18 19.4802 18 18.9201 18 17.8V6.2C18 5.0799 18 4.51984 17.782 4.09202C17.5903 3.71569 17.2843 3.40973 16.908 3.21799C16.4802 3 15.9201 3 14.8 3H9.2C8.0799 3 7.51984 3 7.09202 3.21799C6.71569 3.40973 6.40973 3.71569 6.21799 4.09202C6 4.51984 6 5.07989 6 6.2V17.8C6 18.9201 6 19.4802 6.21799 19.908C6.40973 20.2843 6.71569 20.5903 7.09202 20.782C7.51984 21 8.07989 21 9.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <div class="item-title">
-                                <a href= <?php echo "http://$servername:$port/goncalves/articles/article.php?id_art=".$ligne['id_art']?> >
+                                <a href= <?php echo "articles/article.php?id_art=".$row['id_art']?> >
                                     <h3>iPhone</h3>
                                     <p>En voir plus sur notre sélection diPhones</p>
                                 </a>
@@ -60,7 +55,7 @@
                             <div class="item-title">
                             <a href= 
                             <?php 
-                            echo "http://$servername:$port/goncalves/articles/article.php?id_art=2"
+                            echo "articles/article.php?id_art=2"
                             // A AUTOMATISER ABSOLUMENT JE SUIS PAS FIER DE CE QUE JE VIENS DE FAIRE MAIS FALLAIT QUE JE LE RENDE DESOLE
                             ?> > 
                                     <h3>Plantes vertes</h3>
@@ -72,7 +67,10 @@
                 </div>
             </li>
             <li>
-            <a href= <?php echo "http://$servername:$port/goncalves/contact/contact.php" ?>>Contact</a>';
+            <a href="contact/contact.php"> Contact</a>';
+            </li>
+            <li>
+            <a href="../phpmyadmin" target="_blank">phpmyadmin</a>';
             </li>
         </ul>
     </div>
@@ -80,7 +78,7 @@
         <a href="#sign-in" title="Sign in" class="secondary">
             Se connecter
         </a>
-        <a href="#sign-up" title="Sign up" class="primary">
+        <a href="nouveau.php" title="Sign up" class="primary">
             S'inscrire
         </a>
     </div>
