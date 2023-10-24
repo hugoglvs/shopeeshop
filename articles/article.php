@@ -4,20 +4,21 @@
     <title>Article</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/style.css">
-    <base href="http://localhost:8080/goncalves/">
+    <base href= <?php echo "/goncalves/"?>>
 </head>
 
 <body>
 <?php
-include "../templates/navbar.php";
+include_once "../templates/navbar.php";
 $id_art = $_GET['id_art'];
 
-$sql = 'select * from Articles where id_art= ?';
-$sth = $conn->prepare($sql);
-$sth->execute([$id_art]);
-$row = $sth->fetch();
+$sql = 'SELECT * FROM Articles WHERE id_art= :id_article';
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(":id_article", $id_art, PDO::PARAM_INT);
+$stmt->execute();
+$row = $stmt->fetch();
 
-$sth ->closeCursor();
+$stmt ->closeCursor();
 
 ?>
 

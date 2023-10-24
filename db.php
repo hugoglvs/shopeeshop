@@ -1,5 +1,4 @@
 <?php
-    
     function getDB(){
         $servername = "localhost";
         $port = 8080;

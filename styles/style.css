@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* inclut la marge et la bordure dans les dimensions*/
-    wborder: 1px red dotted;
+    border: 1px red dotted;
 }
 
 body {
@@ -280,16 +280,6 @@ https://www.w3schools.com/css/css3_animations.asp
 
 .list-items-with-description li:hover {
     color: var(--primary);
-}
-
-.list-items-with-description li svg {
-    margin-top: 4px;
-    width: 16px;
-    height: 16px;
-}
-
-.list-items-with-description li:hover svg {
-    stroke: var(--primary);
 }
 
 .item-title h3 {

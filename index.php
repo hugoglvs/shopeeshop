@@ -1,46 +1,41 @@
-
-<!DOCTYPE html>
-<html lang="FR-fr">
-<head>
-    <title>ShopeeShop</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/style.css">
-    <base href="http://localhost:8080/goncalves/">
-</head>
-<body>
-    
-    <?php
-    include "templates/navbar.php"; // also get the database
-    ?>
+<?php
+require_once "templates/head.php";
+include_once "templates/navbar.php";
+?>
 
     <main>
     <?php
-        echo "<table>
-                <caption>Tableau de nos articles</caption>
-                <thead>
-                    <th>Nom</th>
-                    <th>Identifiant</th>
-                    <th>Prix (€)</th>
-                    <th>Stock</th>
-                </thead>";
-        echo "<tbody>";
+        echo <<<HTML
+        <table>
+            <caption>Tableau de nos articles</caption>
+            <thead>
+                <th>Nom</th>
+                <th>Identifiant</th>
+                <th>Prix (€)</th>
+                <th>Stock</th>
+            </thead>
+        <tbody>
+HTML;
         $conn = getDB();
         $sql = 'select * from articles';
         $sth = $conn->prepare($sql);
         $sth->execute();
         while ($row = $sth->fetch()) {
-            echo "<tr><td><a href='articles/article.php?id_art=".$row['id_art']."'>".$row['nom']."</a></td>";
-            echo "<td>".$row['id_art']."</td>";
-            echo "<td>".$row['prix']."</td>";
-            echo "<td>".$row['quantite']."</td>";
+            echo <<<HTML
+            <tr>
+                <td><a href=articles/article.php?id_art=$row[id_art]>$row[nom]</a></td>
+                <td>$row[id_art]</td>
+                <td>$row[prix]</td>
+                <td>$row[quantite]</td>
+            </tr>
+HTML;
         }
         $sth->closeCursor();
-        echo "</tbody>";
-        echo "</table>";
     ?>
-
+    </tbody>
+    </table>
     <a class="button" href="nouveau.php" >Nouveau client</a>
+    <a class="button" href="connexion.php" >Se connecter</a>
     </main>
 </body>
 </html>

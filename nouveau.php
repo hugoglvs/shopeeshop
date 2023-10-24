@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="fr-FR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enregistrement</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <base href="http://localhost:8080/goncalves/">
-
-</head>
-<body>
 <?php
-    include "templates/navbar.php"; // also get the database
-    ?>
+$title = "S'inscrire";
+require_once "templates/head.php";
+require_once "templates/navbar.php"
+?>
 
     <main id="register">
         <form method="post" action="enregistrement.php" autocomplete="off">
             <p>Nom</p>
-            <input type="text"name="n" value="<?php if(isset($_GET['n'])) {echo $_GET['n'];}?>">
+            <input type="text"name="n" value="<?php if(isset($_GET['n'])) {echo $_GET['n'];} ?>">
             <p>Prenom</p>
             <input type="text"name="p" value="<?php if(isset($_GET['p'])) {echo $_GET['p'];}?>">
             <p>Adresse</p>
