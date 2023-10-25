@@ -67,9 +67,6 @@ HTML;
 HTML;
     }
     ?>
-
-    <a href="index.php">Retour</a>
-
     </main>
     <footer>
         <a href="index.php">Retour</a>

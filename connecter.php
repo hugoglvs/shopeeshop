@@ -30,14 +30,15 @@ SQL;
         if ($client && password_verify($mdp, $client["mdp"])) {
             // L'utilisateur est connecté avec succès
             $_SESSION["client"] = $client;
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Génère un jeton CSRF de 256 bits (32 octets)
             header("Location: index.php");
-            // Redirigez l'utilisateur vers la page connexion ou une autre page sécurisée
+            exit;
             } else {
+                // Redirige l'utilisateur vers la page connexion avec le champ mail
                 $_SESSION["client"] = null;
                 $params = http_build_query(array("mail" => $mail));
                 header("Location: connexion.php?".$params);
-                // Permet d'être sûr que le code en dessous n'est pas executé
-                exit();
+                exit;
             }
         }
         $sth->closeCursor();
