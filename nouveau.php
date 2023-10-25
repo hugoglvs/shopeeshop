@@ -6,19 +6,19 @@ require_once "templates/navbar.php"
 
     <main id="register">
         <form method="post" action="enregistrement.php" autocomplete="off">
-            <p>Nom</p>
+            <label for="n">Nom</label>
             <input type="text"name="n" value="<?php if(isset($_GET['n'])) {echo $_GET['n'];} ?>">
-            <p>Prenom</p>
+            <label for="p">Prenom</label>
             <input type="text"name="p" value="<?php if(isset($_GET['p'])) {echo $_GET['p'];}?>">
-            <p>Adresse</p>
+            <label for="adr">Adresse</label>
             <input type="text"name="adr" value="<?php if(isset($_GET['adr'])) {echo $_GET['adr'];}?>">
-            <p>Numero de telephone</p>
+            <label for="num">Numero de telephone</label>
             <input type="text"name="num" value="<?php if(isset($_GET['num'])) {echo $_GET['num'];}?>">
-            <p>Adresse e-mail</p>
+            <label for="mail">Adresse email</label>
             <input type="text"name="mail" value="<?php if(isset($_GET['mail'])) {echo $_GET['mail'];}?>">
-            <p>Mot de passe</p>
+            <label for="m1">Mot de passe</label>
             <input type="password"name="m1" value="">
-            <p>Confirmer votre mot de passe</p>
+            <label for="m2">Confirmer votre mot de passe</label>
             <input type="password" name="m2" value="">
             <input type="submit" value="Envoyer">
         </form>

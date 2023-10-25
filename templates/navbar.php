@@ -7,7 +7,7 @@
     $sth = $conn->prepare($sql);
     $sth->execute();
 
-    function getItem($id_article, $nom_article){ //$row[id_art]
+    function getItem($id_article, $nom_article){
         echo <<<HTML
         <li>
             <div class="item-title">

@@ -7,6 +7,7 @@ $title = "Se connecter";
 require_once "templates/head.php";
 require_once "templates/navbar.php";
 ?>
+<main>
 <h1>Pour se connecter</h1>
     <form action="connecter.php" method="post">
         <label for="mail">Adresse mail:</label>
@@ -16,3 +17,6 @@ require_once "templates/navbar.php";
         <input type="submit" value="Se connecter">
         <a href="enregistrement.php">Créer un compte</a>
     </form>
+</main>
+</body>
+</html>

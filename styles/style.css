@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* inclut la marge et la bordure dans les dimensions*/
-    border: 1px red dotted;
+    wborder: 1px red dotted;
 }
 
 body {
@@ -34,9 +34,9 @@ footer {
     width: 100%;
     height: 30px;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     text-align: center;
-    padding: 5px;
+    padding-bottom: 40px;
 }
 
 img {
@@ -82,7 +82,6 @@ table {
     width: 50%;
     margin: 0 auto;
     border-radius: 10%;
-    height: 25vh;
 }
 #register {
     background-color: #F3EFF5;
@@ -93,13 +92,16 @@ table {
     border: var(--background) 3px solid;
 
 }
+
 th {
     background-color: var(--background2);
-    color: var(--white)
+    color: var(--white);
+    height: 6vh;
 }
 
 
 td:first-child, td a, td a:visited, td a:active  {
+    height: 8vh;
     background-color: var(--gray);
     color: var(--white);
 }

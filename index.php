@@ -34,20 +34,24 @@ HTML;
     ?>
     </tbody>
     </table>
+    <div class="flex-container">
     <?php
     if(isset($_SESSION['client']))
     {
         echo <<<HTML
         <p>Bienvenue, {$_SESSION["client"]["prenom"]} {$_SESSION["client"]["nom"]} </p>
-        <a href="deconnexion.php">Se déconnecter</a>
+        <a class = button href="deconnexion.php">Se déconnecter</a>
+        <a class="button" href="panier.php" >Voir mon panier</a>
 HTML;
     } else {
         echo <<<HTML
     <a class="button" href="nouveau.php" >Nouveau client</a>
     <a class="button" href="connexion.php" >Se connecter</a>
+    
 HTML;
 }
     ?>
+    </div>
     </main>
 </body>
 </html>

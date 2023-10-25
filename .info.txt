@@ -31,3 +31,6 @@ https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
 
 Lien vers un site regroupant des SVG:
 https://www.svgrepo.com/
+
+PHP:
+http_build_query : prend un array en parametre et renvoie un string de forme a etre pris en compte par un navigateur en parametre POST
