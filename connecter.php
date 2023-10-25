@@ -12,37 +12,37 @@ require_once "db.php";
     <?php
     // Récupération des données du formulaire
     if (isset($_POST['mail']) && isset($_POST['mdp'])) {
-        if ($_SERVER('REQUEST_METHOD') == 'POST') {
-        $email = $_POST['mail'];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $mail = $_POST['mail'];
         $mdp = $_POST['mdp'];
         // Connexion à la BD
         $conn = getdB();
         $sql = <<<SQL
             SELECT *
             FROM Clients
-            WHERE mail = :mail AND mdp = :mdp
+            WHERE mail = :mail
 SQL;
         $sth = $conn->prepare($sql);
         $sth->bindParam(":mail", $mail);
-        $sth->bindParam(":mdp", $mdp);
         $sth->execute();
         $client = $sth->fetch();
         // Vérification des résultats
-        if ($client) {
+        if ($client && password_verify($mdp, $client["mdp"])) {
             // L'utilisateur est connecté avec succès
-            if (password_verify($mdp, $client["mdp"])) { 
-                echo "Connecté avec succès en tant que " . $client['nom'] . "!";
-            // Redirigez l'utilisateur vers une page d'accueil ou une autre page sécurisée
-            } else {
-            echo "Échec de la connexion. Veuillez vérifier vos informations.";
+            $_SESSION["client"] = $client;
             header("Location: index.php");
-            // Permet d'être sûr que le code en dessous n'est pas executé
-            exit();
+            // Redirigez l'utilisateur vers la page connexion ou une autre page sécurisée
+            } else {
+                $_SESSION["client"] = null;
+                $params = http_build_query(array("mail" => $mail));
+                header("Location: connexion.php?".$params);
+                // Permet d'être sûr que le code en dessous n'est pas executé
+                exit();
             }
         }
         $sth->closeCursor();
-        }
     }
+    
         
 
 

@@ -34,8 +34,20 @@ HTML;
     ?>
     </tbody>
     </table>
+    <?php
+    if(isset($_SESSION['client']))
+    {
+        echo <<<HTML
+        <p>Bienvenue, {$_SESSION["client"]["prenom"]} {$_SESSION["client"]["nom"]} </p>
+        <a href="deconnexion.php">Se déconnecter</a>
+HTML;
+    } else {
+        echo <<<HTML
     <a class="button" href="nouveau.php" >Nouveau client</a>
     <a class="button" href="connexion.php" >Se connecter</a>
+HTML;
+}
+    ?>
     </main>
 </body>
 </html>

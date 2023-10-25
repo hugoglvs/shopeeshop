@@ -1,6 +1,7 @@
 <?php
     session_start();
-    require_once "db.php";
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    require_once $path.'/goncalves/db.php';
 ?>
 
 <!DOCTYPE html>

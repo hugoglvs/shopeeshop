@@ -64,12 +64,20 @@ HTML;
             </li>
         </ul>
     </div>
-    <div class="action-buttons">
-        <a href="connexion.php" title="Sign in" class="secondary">
-            Se connecter
-        </a>
-        <a href="nouveau.php" title="Sign up" class="primary">
-            S'inscrire
-        </a>
-    </div>
+    <?php
+    if(isset($_SESSION['client']))
+    {
+        echo "<p>Bienvenue, {$_SESSION["client"]["prenom"]} {$_SESSION["client"]["nom"]}</p>" ;
+    } else {echo <<<HTML
+        <div class="action-buttons">
+            <a href="connexion.php" title="Sign in" class="secondary">
+                Se connecter
+            </a>
+            <a href="nouveau.php" title="Sign up" class="primary">
+                S'inscrire
+            </a>
+        </div>
+HTML;
+    }
+    ?>
 </nav>

@@ -144,7 +144,10 @@ h1 {
 .logo svg {
     fill: var(--white);
 }
-     
+
+nav {
+    color: var(--white);
+}
 .navigation {    
     display: flex;
     flex-direction: row;
@@ -165,7 +168,6 @@ h1 {
 .navigation > li > button > svg {
     stroke: var(--white);
     fill: var(--white);
-    color: var(--white);
     margin-top: -2px;
     transition: all 0.2s ease-in-out;
 }
