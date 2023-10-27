@@ -1,7 +1,7 @@
 <?php
 session_start();
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['client'])) {
+// Vérifier si l'utilisateur est connecté et que le token est bon
+if (isset($_SESSION["client"]) && $_SESSION["client"] != null && ($_POST['token'] == $_SESSION['csrf_token'])) {
     header('Location: index.php');
     exit;
 }
@@ -9,15 +9,13 @@ if (!isset($_SESSION['client'])) {
 
 // Récupérer le contenu du panier depuis la variable de session
 $panier = isset($_SESSION['panier']) ? $_SESSION['panier'] : [];
-
 $total = 0;
 
-require_once 'templates/head.php';
-include_once 'templates/navbar.php';
+require_once 'includes/head.php';
+include_once 'includes/navbar.php';
 ?>
 <main>
     <h1>Votre Panier</h1>
-
     <?php
     if (empty($panier)) {
         echo "Votre panier ne contient aucun article.";
@@ -64,12 +62,11 @@ HTML;
         echo <<<HTML
         </table>
             <p>Montant total de la commande : $total</p>
+            <a class="button" href="commande.php">Passer la commande</a>
 HTML;
     }
     ?>
     </main>
-    <footer>
-        <a href="index.php">Retour</a>
-    </footer>
+<?php include_once 'includes/footer.php' ?>
 </body>
 </html>

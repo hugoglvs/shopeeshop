@@ -27,8 +27,6 @@
             </ul>
         </div>
     </main>
-    <footer>
-    <a href="../index.php">Retour</a>
-    </footer>
+<?php include_once '../templates/footer.php' ?>
 </body>
 </html>

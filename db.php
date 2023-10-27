@@ -1,15 +1,14 @@
 <?php
+require_once 'includes/config.php';
+
     function getDB(){
-        $servername = "localhost";
-        $port = 8080;
-        $username = "root";
-        $password = "root";
-        $dbname = "ShopeeShop";
         try {
-            return new PDO('mysql:host='.$servername.';dbname='.$dbname.';charset=utf8',
-                            $username, $password);
+            return new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8',
+                            DB_USER, DB_PASS);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
     }
+
+    $conn = getDB();
 ?>

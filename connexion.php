@@ -4,8 +4,8 @@ if(isset($_SESSION["client"]) && $_SESSION["client"] != null){
     exit();
 }
 $title = "Se connecter";
-require_once "templates/head.php";
-require_once "templates/navbar.php";
+require_once "includes/head.php";
+require_once "includes/navbar.php";
 ?>
 <main>
 <h1>Pour se connecter</h1>

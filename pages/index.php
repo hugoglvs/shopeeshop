@@ -1,6 +1,7 @@
 <?php
-require_once "templates/head.php";
-include_once "templates/navbar.php";
+require_once "../includes/config.php";
+require_once SITE_PATH."includes/head.php";
+include_once SITE_PATH."includes/navbar.php";
 ?>
 
     <main>
@@ -42,6 +43,7 @@ HTML;
         <p>Bienvenue, {$_SESSION["client"]["prenom"]} {$_SESSION["client"]["nom"]} </p>
         <a class = button href="deconnexion.php">Se déconnecter</a>
         <a class="button" href="panier.php" >Voir mon panier</a>
+        <a class="button" href="historique.php" >Historique des commandes</a>
 HTML;
     } else {
         echo <<<HTML
