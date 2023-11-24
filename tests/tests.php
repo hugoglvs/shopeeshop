@@ -23,7 +23,7 @@ require "../includes/config.php";
       } else {
         console.log("Doesn't work");
       }
-    });
+    })
 
     function checkPassword() {
       var password = $("input[name='password']").val();
