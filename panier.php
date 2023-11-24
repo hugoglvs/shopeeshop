@@ -1,11 +1,5 @@
 <?php
-session_start();
-// Vérifier si l'utilisateur est connecté et que le token est bon
-if (isset($_SESSION["client"]) && $_SESSION["client"] != null && ($_POST['token'] == $_SESSION['csrf_token'])) {
-    header('Location: index.php');
-    exit;
-}
-
+require_once 'includes/config.php';
 
 // Récupérer le contenu du panier depuis la variable de session
 $panier = isset($_SESSION['panier']) ? $_SESSION['panier'] : [];

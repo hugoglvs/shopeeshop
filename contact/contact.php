@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="FR-fr">
-<head>
-    <title>Contact</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/style.css">
-    <base href="http://localhost:8080/goncalves/">
-</head>
-<header>
-    <h1>Contact</h1>
-</header>
-<body>
-    <?php 
-    include "../templates/navbar.php";
-    ?>
+<?php
+session_start();
+$title = "Contact";
+require_once '../includes/config.php';
+require_once '../includes/head.php';
+require_once '../includes/navbar.php';
+?>
     <main>
         <div class="img-container">
             <img src="images/hugo.jpeg" alt="Photo de Hugo GONÇALVES, créateur de ShopeeShop">
@@ -27,6 +19,6 @@
             </ul>
         </div>
     </main>
-<?php include_once '../templates/footer.php' ?>
+<?php include_once '../includes/footer.php' ?>
 </body>
 </html>

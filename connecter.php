@@ -1,6 +1,8 @@
 <?php
 session_start();
-require_once "db.php";
+require_once "includes/config.php";
+require_once "includes/head.php";
+require_once "includes/navbar.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,8 +17,6 @@ require_once "db.php";
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail = $_POST['mail'];
         $mdp = $_POST['mdp'];
-        // Connexion à la BD
-        $conn = getdB();
         $sql = <<<SQL
             SELECT *
             FROM Clients
@@ -29,13 +29,13 @@ SQL;
         // Vérification des résultats
         if ($client && password_verify($mdp, $client["mdp"])) {
             // L'utilisateur est connecté avec succès
-            $_SESSION["client"] = $client;
+            $_SESSION['client'] = $client;
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Génère un jeton CSRF de 256 bits (32 octets)
             header("Location: index.php");
             exit;
             } else {
                 // Redirige l'utilisateur vers la page connexion avec le champ mail
-                $_SESSION["client"] = null;
+                $_SESSION['client'] = null;
                 $params = http_build_query(array("mail" => $mail));
                 header("Location: connexion.php?".$params);
                 exit;

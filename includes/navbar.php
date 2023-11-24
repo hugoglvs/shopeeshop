@@ -1,24 +1,4 @@
-
-<?php
-    $sql = "SELECT * FROM Articles";
-    $sth = $conn->prepare($sql);
-    $sth->execute();
-
-    function getItem($id_article, $nom_article){
-        echo <<<HTML
-        <li>
-            <div class="item-title">
-                <a href= "articles/article.php?id_art=$id_article">
-                    <h3>$nom_article</h3>
-                    <p>En voir plus sur notre produit $nom_article</p>
-                </a>
-            </div>
-        </li>
-HTML;
-    }
-?>
-
-<nav class="menu_wrapper">
+<nav>
     <div class="menu_bar">
         <?php
             echo '<a href="index.php" title="Logo" class="logo">';
@@ -35,25 +15,6 @@ HTML;
         </a>
         <ul class="navigation">
             <li>
-                <button>
-                    Produits
-                    <svg opacity="0.5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
-                        <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
-                    </svg>
-                </button>
-                <div class="dropdown">
-                    <ul class="list-items-with-description">
-                        <?php
-                        while( $row = $sth->fetch() ){
-                            $id_article = $row['id_art'];
-                            $nom_article = $row['nom'];
-                            getItem($id_article, $nom_article);
-                        }
-                        ?>
-                    </ul>
-                </div>
-            </li>
-            <li>
             <a href="contact/contact.php"> Contact</a>
             </li>
             <li>
@@ -61,20 +22,56 @@ HTML;
             </li>
         </ul>
     </div>
+    <div class="action-buttons">
     <?php
     if(isset($_SESSION['client']))
     {
-        echo "<p>Bienvenue, {$_SESSION["client"]["prenom"]} {$_SESSION["client"]["nom"]}</p>" ;
-    } else {echo <<<HTML
-        <div class="action-buttons">
+        //echo "" ;
+        echo <<<HTML
+        <div class="avatar-dropdown">
+        <div class="avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+        </div>
+        <ul class="dropdown">
+            <li><span>{$_SESSION["client"]["prenom"]} {$_SESSION["client"]["nom"]}</span></li>
+            <li><a href="panier.php">Mon panier</a></li>
+            <li><a href="commande.php">Mes commandes</a></li>
+            <li><a href="deconnexion.php">Déconnexion</a></li>
+        </ul>
+        </div>
+HTML;
+    } else {
+        echo <<<HTML
+        
             <a href="connexion.php" title="Sign in" class="secondary">
                 Se connecter
             </a>
             <a href="nouveau.php" title="Sign up" class="primary">
                 S'inscrire
             </a>
-        </div>
+        
 HTML;
     }
     ?>
+    </div>
 </nav>
+<script>
+    const avatarDropdown = $('.avatar-dropdown');
+    const dropdown = $('.dropdown');
+
+    avatarDropdown.on('click', () => {
+        dropdown.toggleClass('active');
+    });
+
+    // Hide dropdown menu when user clicks outside of it
+    $().on('click', (event) => {
+    const isClickInside = avatarDropdown.contains(event.target);
+        if (!isClickInside) {
+            dropdown.removeClass('active');
+        }
+    });
+    
+</script>

@@ -1,14 +1,15 @@
 <?php
-require_once "../includes/config.php";
-require_once SITE_PATH."includes/head.php";
-include_once SITE_PATH."includes/navbar.php";
+// Tous les fichiers php doivent commencer par require_once "includes/config.php"; 
+// qui contient start_session(), des définitions de constantes et la connexion à la base de données
+require_once "includes/config.php";
+require_once "includes/head.php";
+include_once "includes/navbar.php";
 ?>
-
+    <header>ShopeeShop, votre référence du shopping en ligne</header>
     <main>
     <?php
         echo <<<HTML
         <table>
-            <caption>Tableau de nos articles</caption>
             <thead>
                 <th>Nom</th>
                 <th>Identifiant</th>

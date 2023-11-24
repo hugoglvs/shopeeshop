@@ -4,3 +4,28 @@ Error: [0] Failed opening required '/Users/hugogoncalves/Developer/websites/gonc
 Error: [0] Failed opening required '/Users/hugogoncalves/Developer/websites/goncalves//goncalves/includes/start.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.11/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/head.php on line 2
 Error: [0] Failed opening required '/Users/hugogoncalves/Developer/websites/goncalves//goncalves/includes/start.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.11/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/head.php on line 2
 Error: [0] Failed opening required '/Users/hugogoncalves/Developer/websites/goncalves//goncalves/includes/start.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.11/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/head.php on line 2
+Error: [0] Failed opening required '/Users/hugogoncalves/Developer/websites/goncalves//goncalves/includes/start.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.11/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/head.php on line 2
+Error: [0] Failed opening required '/Users/hugogoncalves/Developer/websites/goncalves//goncalves/includes/start.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.11/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/head.php on line 2
+Error: [0] Call to a member function prepare() on null in /Users/hugogoncalves/Developer/websites/goncalves/includes/navbar.php on line 4
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/pages/index.php on line 20
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/index.php on line 20
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/index.php on line 20
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/index.php on line 20
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/index.php on line 20
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/index.php on line 20
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/includes/config.php on line 27
+Error: [0] Failed opening required '../db.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.11/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/config.php on line 26
+Error: [0] Call to undefined function getDB() in /Users/hugogoncalves/Developer/websites/goncalves/index.php on line 20
+Error: [HY000] SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 19
+Error: [22003] SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 24
+Error: [22003] SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 24
+Error: [22003] SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 24
+Error: [22003] SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 24
+Error: [0] Undefined constant "console" in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 33
+Error: [0] emailAlreadyExist(): Argument #1 ($email) must be of type string, null given, called in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 17 in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 6
+Error: [0] emailAlreadyExist(): Argument #1 ($email) must be of type string, null given, called in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 17 in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 6
+Error: [0] emailAlreadyExist(): Argument #1 ($email) must be of type string, null given, called in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 17 in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 6
+Error: [0] emailAlreadyExist(): Argument #1 ($email) must be of type string, null given, called in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 17 in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 6
+Error: [0] emailAlreadyExist(): Argument #1 ($email) must be of type string, null given, called in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 17 in /Users/hugogoncalves/Developer/websites/goncalves/checkEmail.php on line 6
+Error: [22003] SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 21
+Error: [22003] SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 21

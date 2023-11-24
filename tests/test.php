@@ -1,8 +1,6 @@
 <?php
 
-require '../db.php';
-
-$conn = getDB();
+require_once  "../includes/config.php";
 $sql = "Select * from Articles";
 $rep = $conn->query($sql);
 $row = $rep->fetch();

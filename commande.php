@@ -1,12 +1,9 @@
 <?php
-session_start();
 $title = "Passer la commande";
-
-// Peut etre ajouter une verification des tokens ? A demander au prof avant de le rendre
+require_once "includes/config.php";
 require_once "includes/head.php";
 include_once "includes/navbar.php";
 
-$conn = getDB();
 $total = 0;
 ?>
 

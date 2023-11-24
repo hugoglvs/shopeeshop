@@ -1,7 +1,8 @@
 <?php
 $title = "Article";
-require_once "../templates/head.php";
-include_once "../templates/navbar.php";
+require_once "../includes/config.php";
+require_once "../includes/head.php";
+include_once "../includes/navbar.php";
 $id_art = $_GET['id_art'];
 
 $query = 'SELECT * FROM Articles WHERE id_art= :id_article';
@@ -20,7 +21,9 @@ $sth ->closeCursor();
         echo <<<HTML
         <h1>$article[nom]</h1>
         <div class="flex-container">
-            <img src= $article[url_photo] alt="Photo de l'article">
+            <div class="img-container">
+                <img src= $article[url_photo] alt="Photo de l'article">
+            </div>
             <p> $article[description]</p>
         </div>
         HTML;
@@ -43,7 +46,7 @@ $sth ->closeCursor();
 ?>
 </main>
     
-    <?php include_once '../templates/footer.php' ?>
+    <?php include_once '../includes/footer.php' ?>
 
 </body>
 </html>

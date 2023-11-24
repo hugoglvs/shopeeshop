@@ -1,10 +1,11 @@
 <?php
-session_start();
+require_once "includes/config.php";
 $title = "Historique";
 require_once "includes/head.php";
 include_once "includes/navbar.php";
+
 if (!isset($_SESSION['client'])) {
-    header("Location: connexion.php"); // Rediriger l'utilisateur vers la page de connexion si pas connecté
+    header("Location: connexion.php");
     exit;
 }
 
@@ -15,7 +16,7 @@ $query = "SELECT Commandes.id_commande, Commandes.id_art, Articles.nom, Articles
           WHERE Commandes.id_client = :id_client";
 
 $sth = $conn->prepare($query);
-$sth->bindParam(":id_client", $_SESSION["client"]["id_client"]);
+$sth->bindParam(":id_client", $_SESSION["client"]["id_client"], PDO::PARAM_INT);
 $sth->execute();
 $all = $sth->fetchAll();
 
