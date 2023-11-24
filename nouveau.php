@@ -19,19 +19,19 @@ $email = isset($_GET["mail"]) ? $_GET["mail"] : "";
             
             <label for="n">Nom</label>
             <span id=nomError></span>
-            <input type="text"name="n" value="<?= htmlspecialchars($nom) ?>">
+            <input type="text"name="n">
 
             <label for="p">Prenom</label>
             <span id=prenomError></span>
-            <input type="text"name="p" value="<?= htmlspecialchars($prenom) ?>">
+            <input type="text"name="p">
 
             <label for="adr">Adresse</label>
             <span id=adresseError></span>
-            <input type="text"name="adr" value="<?= htmlspecialchars($adresse) ?>">
+            <input type="text"name="adr">
 
             <label for="num">Numero de telephone</label>
             <span id=numeroError></span>
-            <input type="text"name="num" value="<?= htmlspecialchars($numero) ?>">
+            <input type="text"name="num">
 
             <label for="mail">Adresse email</label>
             <span id=emailError></span>
