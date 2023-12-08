@@ -1,13 +1,16 @@
 <?php
 require_once "includes/config.php";
+require_once('vendor/autoload.php');
+// stripe.php contient les infos comme les clefs secrètes et l’objet ‘$stripe’*
+require_once('stripe.php');
 
 // Permet d'ajouter une instance de Client dans la base de donnée
-function enregistrer(string $nom, string $prenom, string $adr, string $num, string $email, string $mdp): bool {
+function enregistrer(string $nom, string $prenom, string $id_stripe, string $adr, string $num, string $email, string $mdp): bool {
     $conn = getDB();
     $mdp_enc = password_hash($mdp, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO Clients (nom, prenom, adresse, numero, mail, mdp) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO Clients (nom, prenom, id_stripe, adresse, numero, mail, mdp) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $sth = $conn->prepare($sql);
-    $res = $sth->execute([$nom, $prenom, $adr, $num, $email, $mdp_enc]);
+    $res = $sth->execute([$nom, $prenom, $id_stripe, $adr, $num, $email, $mdp_enc]);
     $sth->closeCursor();
     return $res;
 }
@@ -24,18 +27,24 @@ function existe($email): bool {
     return $count > 0;
 }
 
-$nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
-$prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
-$adresse = isset($_POST["adresse"]) ? $_POST["adresse"] : "";
-$numero = isset($_POST["numero"]) ? $_POST["numero"] : "";
-$email = isset($_POST["email"]) ? $_POST["email"] : "";
-$mdp = isset($_POST["mdp"]) ? $_POST["mdp"] : "";
+// Pas besoin d'assainir les données car elles ne sont pas utilisées dans une requête SQL
+// ni affichées dans une page HTML
+$nom = isset($_POST["n"]) ? $_POST["n"] : "";
+$prenom = isset($_POST["p"]) ? $_POST["p"] : "";
+$adresse = isset($_POST["adr"]) ? $_POST["adr"] : "";
+$numero = isset($_POST["num"]) ? $_POST["num"] : "";
+$email = isset($_POST["mail"]) ? $_POST["mail"] : "";
+$mdp = isset($_POST["m1"]) ? $_POST["m1"] : "";
 
 if (existe($email)) {
     echo 0;
 } else {
-    enregistrer($nom, $prenom, $adresse, $numero, $email, $mdp);
+    $customer = $stripe->customers->create([
+        'email' => $email,
+        'name' => $prenom." ".$nom
+    ]);
+    $id_stripe = $customer->id;
+    enregistrer($nom, $prenom, $id_stripe, $adresse, $numero, $email, $mdp);
     echo 1;
 }
-
 ?>

@@ -25,7 +25,7 @@ define('SITE_PATH', $_SERVER['DOCUMENT_ROOT'].'/goncalves/');
 
 // Error handling
 error_reporting(E_ALL);
-ini_set('display_errors', 1);   // Ne pas oublier de changer la valeur à 0 pour la mise en production
+ini_set('display_errors', 0);   // Ne pas oublier de changer la valeur à 0 pour la mise en production
 
 function exception_handler($exception) {
   $message =  "Error: [" . $exception->getCode() . "] " . $exception->getMessage() . " in " . $exception->getFile() . " on line " . $exception->getLine() . PHP_EOL;

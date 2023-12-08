@@ -5,8 +5,9 @@ require_once "includes/config.php";
 require_once "includes/head.php";
 include_once "includes/navbar.php";
 ?>
-    <header>ShopeeShop, votre référence du shopping en ligne</header>
+    
     <main>
+    <header class="hero"></header>
     <?php
         echo <<<HTML
         <table>
@@ -19,7 +20,7 @@ include_once "includes/navbar.php";
         <tbody>
 HTML;
         $conn = getDB();
-        $sql = 'select * from articles';
+        $sql = 'SELECT * FROM articles';
         $sth = $conn->prepare($sql);
         $sth->execute();
         while ($row = $sth->fetch()) {
@@ -36,25 +37,7 @@ HTML;
     ?>
     </tbody>
     </table>
-    <div class="flex-container">
-    <?php
-    if(isset($_SESSION['client']))
-    {
-        echo <<<HTML
-        <p>Bienvenue, {$_SESSION["client"]["prenom"]} {$_SESSION["client"]["nom"]} </p>
-        <a class = button href="deconnexion.php">Se déconnecter</a>
-        <a class="button" href="panier.php" >Voir mon panier</a>
-        <a class="button" href="historique.php" >Historique des commandes</a>
-HTML;
-    } else {
-        echo <<<HTML
-    <a class="button" href="nouveau.php" >Nouveau client</a>
-    <a class="button" href="connexion.php" >Se connecter</a>
-    
-HTML;
-}
-    ?>
-    </div>
     </main>
+    <?php include_once "includes/chat.php"?>
 </body>
 </html>

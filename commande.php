@@ -1,42 +1,37 @@
 <?php
-$title = "Passer la commande";
 require_once "includes/config.php";
-require_once "includes/head.php";
-include_once "includes/navbar.php";
+require_once('vendor/autoload.php');
+// stripe.php contient les infos comme les clefs secrètes et l’objet ‘$stripe’*
+require_once('stripe.php');
 
-$total = 0;
-?>
+$commande = array();
 
-<main>
-    <h1>Recapitulatif de votre commande</h1>
-    <table>
-        <tr>
-            <th>Article</th>
-            <th>Quantité</th>
-        </tr>
-    <?php
-    if (isset($_SESSION["panier"])) {
-        $sth = $conn->prepare("SELECT * FROM Articles WHERE id_art = :id_art");
-        foreach ($_SESSION["panier"] as $article) {
-            $sth->bindParam(":id_art", $article["id"], PDO::PARAM_STR);
-            $sth->execute();
-            $row = $sth->fetch();
-            $total += $row["prix"]*$article["quantite"];
-            echo <<<HTML
-            <tr>
-                <td>{$row["nom"]}</td>
-                <td>{$article["quantite"]}</td>
-            </tr>
-HTML;
+if (isset($_SESSION["panier"])) {
+    $sth = $conn->prepare("SELECT * FROM Articles WHERE id_art = :id_art");
+    foreach ($_SESSION["panier"] as $article) {
+        $sth->bindParam(":id_art", $article["id"], PDO::PARAM_STR);
+        $sth->execute();
+        $row = $sth->fetch();
+        $price = $row['id_stripe'];
+        $quantity = $article['quantite'];
+        array_push($commande, array('price'=>$price, 'quantity'=>$quantity));
     }
 }
-    ?>
-    </table>
 
-    <h2>Montant de votre commande: <?= $total?></h2>
-    <h2>La commande sera expediée à l'adresse suivante:</h2>
-    <p><?=  $_SESSION["client"]["nom"]." ".$_SESSION["client"]["prenom"]?></p>
-    <p> <?= $_SESSION["client"]["adresse"]?></p>
-    <a class="button" href="acheter.php">Valider</a>
+// // Faire une vérification contre les attaques par ‘POST’
+// if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+//  echo 'Invalid request';
+//  exit;
+// }
+$checkout_session = $stripe->checkout->sessions->create([
+ 'customer' => $_SESSION['client']['id_stripe'],
+ // A changer selon le port qu'ecoute votre serveur
+ 'success_url' => "http://localhost:8080/goncalves/acheter.php",
+ 'cancel_url' => "http://localhost:8080/goncalves/index.php",
+ 'mode' => "payment",
+ 'automatic_tax' => ['enabled' => false],
+ 'line_items' => $commande,
+]);
 
-    
+header("HTTP/1.1 303 See Other");
+header("Location: " . $checkout_session->url);

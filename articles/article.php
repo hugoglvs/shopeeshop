@@ -16,37 +16,58 @@ $sth ->closeCursor();
 
 
 <main id="article">
-    <?php
-    if($article){
+<?php
+if($article){
+    echo <<<HTML
+    <div class="container">
+    <h1>$article[name]</h1>
+    <div class="product-card">
+        <img class="product-image" src="$article[url_photo]" alt="Product Image">
+        <div class="product-details">
+            <p class="product-description">$article[description]</p>
+HTML;
+    // Vérifiez si l'utilisateur est connecté avant d'afficher le formulaire
+    if (isset($_SESSION['client']) && isset( $_SESSION['csrf_token'])) {
         echo <<<HTML
-        <h1>$article[nom]</h1>
-        <div class="flex-container">
-            <div class="img-container">
-                <img src= $article[url_photo] alt="Photo de l'article">
+        <form action="ajouter.php" method="POST">
+            <input type="hidden" name="article_id" value="{$article['id_art']}">
+            <div class="quantity-select">
+                <label for="quantie">Selectionner la quantité:</label>
+                <input type="number" id="quantie" name="quantite" min="1" max="$article[quantite]" value="1">
             </div>
-            <p> $article[description]</p>
-        </div>
+            <input class="buy-button" type="submit" value="Ajoutez à votre panier">
+            <input type="hidden" id="token" name="token" value="{$_SESSION['csrf_token']}"><br><br>
+        </form>
+        <div class="response"></div>
         HTML;
-
-        // Vérifiez si l'utilisateur est connecté avant d'afficher le formulaire
-        if (isset($_SESSION['client']) && isset( $_SESSION['csrf_token'])) {
-            echo <<<HTML
-            <form action="ajouter.php" method="POST">
-                <input type="hidden" name="article_id" value="{$article['id_art']}">
-                <label for="quantite">Nombre d'exemplaires :</label>
-                <input type="number" name="quantite" id="quantite" min="1" max="{$article['quantite']}" value="1" required>
-                <input type="submit" value="Ajoutez à votre panier">
-                <input type="hidden" id="token" name="token" value="{$_SESSION['csrf_token']}"><br><br>
-            </form>
-            HTML;
     }
-    } else {
-        echo "<h1>Aucun article n'a été trouvé</h1>";
-    }
+} else {
+    echo "<h1>Aucun article n'a été trouvé</h1>";
+}
 ?>
+        </div>
+    </div>
+</div>
 </main>
-    
-    <?php include_once '../includes/footer.php' ?>
+<?php include_once '../includes/footer.php' ?>
+<?php include_once "../includes/chat.php"?>
 
+<script>
+    $(document).ready(function () {
+        $(".response").hide();
+        $("form").on("submit", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "ajouter.php",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function (response) {
+                        $(".response").html(response);
+                        $(".response").show();
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
