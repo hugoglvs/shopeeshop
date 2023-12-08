@@ -1,3 +1,5 @@
+<?php require_once "includes/config.php"?>
+
 <div id="chat-bubble">
     <img src="images/chat.png" alt="">
 </div>
@@ -5,8 +7,17 @@
     <div id="chat-header">Chat</div>
     <div id="chat-body">
         <div id="chat-log"></div>
-        <input type="text" id="chat-input" placeholder="Tapez votre message...">
+        <?php
+        if (isset($_SESSION['client']) && isset( $_SESSION['csrf_token'])) {
+            echo <<<HTML
+            <input type="text" id="chat-input" placeholder="Tapez votre message...">
+            <input type="hidden" id="token" name="token" value="{$_SESSION['csrf_token']}">
         <button id="chat-send-btn">Envoyer</button>
+HTML;
+        } else {
+            echo "<p><a href='connexion.php'>Connectez-vous</a> pour envoyer un message</p>";
+        }
+        ?>
     </div>
 </div>  
 
@@ -30,11 +41,10 @@ $(document).ready(() => {
 });
 
 
-
 function updateChat() {
     $.ajax({
         type: "POST",
-        url: "updateChat.php",
+        url: "<?=SITE_URL."updateChat.php"?>",
         success: function (response) {
             if (response.length > 0){
                 $("#chat-log").html(response)
@@ -48,13 +58,13 @@ function updateChat() {
 function sendMessage() {
     $.ajax({
         type: "POST",
-        url: "sendChat.php",
-        data: { message: $("input[id='chat-input']").val().trim()},
+        url: "<?=SITE_URL."sendChat.php"?>",
+        data: { message: $("input[id='chat-input']").val().trim(),
+                token: $("input[id='token']").val()},
         success: function (response) {
                 $("#chat-log").html(response);
                 $("input[id='chat-input']").val("");
             }
     });
 }
-
 </script>

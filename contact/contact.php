@@ -20,5 +20,6 @@ require_once '../includes/navbar.php';
         </div>
     </main>
 <?php include_once '../includes/footer.php' ?>
+<!-- ?php include '../includes/chat.php' ? -->
 </body>
 </html>

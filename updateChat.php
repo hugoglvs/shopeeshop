@@ -2,6 +2,13 @@
 
 require_once "includes/config.php";
 
+
+// Vérifie que la requête est bien une requête POST
+if (!($_SERVER['REQUEST_METHOD'] == 'POST')) {
+  header('Location:connexion.php');
+  exit;
+}
+
 function fetchChat() {
   $conn = getDB();
   // on récupère les 10 messages les plus récents si ils datent de moins de 10 minutes
@@ -39,7 +46,9 @@ function displayChat(array $chat) {
   foreach($chat as $message) {
     $author = getAuthorName($message['id_client']);
     $content = htmlspecialchars($message['content']);
+    $time = $message['time'];
     echo <<<HTML
+    <span class="time">[$time]</span><br>
     <span><strong>$author dit:</strong> "$content"</span><br>
   HTML;
   }

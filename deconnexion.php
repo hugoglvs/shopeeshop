@@ -11,11 +11,9 @@ function addStock($quantite, $article_id){
 
 $panier = $_SESSION['panier'];
 foreach ($panier as $article) {
-  var_dump( $panier);
   addStock($article['quantite'], $article['id']);
 }
 
 session_destroy();
 header("Location: index.php");
-exit();
-
+exit;

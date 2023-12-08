@@ -2,14 +2,15 @@
 
 require_once "includes/config.php";
 
-// Redirigier l'utilisateur vers la page d'accueil si token invalide
-// if (! $_POST['token'] === $_SESSION['csrf_token']) {
-//   header('Location:index.php');
-//   exit;
-// }
+// Vérifie que le jeton CSRF est présent et correct
+if (!($_POST['token'] === $_SESSION['csrf_token'])) {
+  header('Location: index.php');
+  exit("Token CSRF invalide");
+}
 
 $userId = $_SESSION['client']['id_client'];
 $message = $_POST['message'];
+echo $message." ".$userId;
 
 function isMessageValid(string $message) {
   return strlen($message) && $message != "";

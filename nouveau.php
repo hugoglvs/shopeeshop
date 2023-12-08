@@ -3,48 +3,66 @@ $title = "S'inscrire";
 require_once "includes/head.php";
 require_once "includes/navbar.php";
 
-
 // Initialise les variables si elles sont bien déclarées dans le $_GET
 $nom = isset($_GET["n"]) ? htmlspecialchars($_GET["n"]) : "";
 $prenom = isset($_GET["p"]) ? htmlspecialchars($_GET["p"]) : "";
 $adresse = isset($_GET["adr"]) ? htmlspecialchars($_GET["adr"]) : "";
 $numero = isset($_GET["num"]) ? htmlspecialchars($_GET["num"]) : "";
 $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
+
 ?>
 
     <main id="register">
         <span id="message"></span>
+        <div class="registration-container">
+            <h2>Inscription</h2>
+            <form id="registrationForm" method="post" action="enregistrement.php" autocomplete="off">
+                <div class="form-group">
+                    <label for="n">Nom</label>
+                    <span id="nomError"></span>
+                    <input type="text" id="n" name="n" required>
+                </div>
 
-        <form id="registrationForm" method="post" action="enregistrement.php" autocomplete="off">
-            
-            <label for="n">Nom</label>
-            <span id=nomError></span>
-            <input type="text" id="n" name="n">
+                <div class="form-group">
+                    <label for="p">Prenom</label>
+                    <span id="prenomError"></span>
+                    <input type="text" id="p" name="p" required>
+                </div>
 
-            <label for="p">Prenom</label>
-            <span id=prenomError></span>
-            <input type="text" id="p" name="p">
+                <div class="form-group">
+                    <label for="adr">Adresse</label>
+                    <span id="adresseError"></span>
+                    <input type="text" id="adr" name="adr" required>
+                </div>
 
-            <label for="adr">Adresse</label>
-            <span id=adresseError></span>
-            <input type="text" id="adr" name="adr">
+                <div class="form-group">
+                    <label for="num">Numero de telephone</label>
+                    <span id="numeroError"></span>
+                    <input type="text" id="num" name="num" required>
+                </div>
 
-            <label for="num">Numero de telephone</label>
-            <span id=numeroError></span>
-            <input type="text" id="num" name="num">
+                <div class="form-group">
+                    <label for="mail">Adresse email</label>
+                    <span id="emailError"></span>
+                    <input type="email" id="mail" name="mail" required>
+                </div>
 
-            <label for="mail">Adresse email</label>
-            <span id=emailError></span>
-            <input type="text" id="mail" name="mail">
+                <div class="form-group">
+                    <label for="m1">Mot de passe</label>
+                    <span id="passwordError"></span>
+                    <input type="password" id="m1" name="m1" required>
+                </div>
 
-            <label for="m1">Mot de passe</label>
-            <span id=passwordError></span>
-            <input type="password" id="m1" name ="m1" value="">
+                <div class="form-group">
+                    <label for="m2">Confirmer votre mot de passe</label>
+                    <input type="password"  id="m2" name="m2" required>
+                </div>
 
-            <label for="m2">Confirmer votre mot de passe</label>
-            <input type="password"  id="m2" name="m2" value="">
-            <input type="submit" value="Envoyer">
-        </form>
+                <div class="form-group">
+                    <input type="submit" value="Envoyer">
+                </div>
+            </form>
+        </div>
     </main>
 <?php include_once 'includes/footer.php' ?>
 <script>
@@ -213,6 +231,9 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
         }
 
 </script>
-
+<?php 
+include_once 'includes/footer.php';
+include_once 'includes/chat.php' 
+?>
 </body>
 </html>

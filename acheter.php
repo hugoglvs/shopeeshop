@@ -30,7 +30,6 @@ if (!empty($panier)) {
         $quantite = $article['quantite'];
         $id_client = $client['id_client'];
 
-
         // Insérer l'article dans la table Commandes
         $query = "INSERT INTO Commandes (id_art, id_client, quantite) VALUES (:id_art, :id_client, :quantite)";
         $sth = $conn->prepare($query);
@@ -39,12 +38,14 @@ if (!empty($panier)) {
         $sth->bindParam(":quantite", $quantite, PDO::PARAM_INT);
         $sth->execute();
 
+        // Le stock est mis à jour lors de l'ajout dans le panier et de la déconnexion
+        // DEPRECATED
         // Mettre à jour la quantité en stock dans la table Articles
-        $query = "UPDATE Articles SET quantite = quantite - :quantite WHERE id_art = :id_art";
-        $sth = $conn->prepare($query);
-        $sth->bindParam(":id_art", $id_art, PDO::PARAM_INT);
-        $sth->bindParam(":quantite", $quantite, PDO::PARAM_INT);
-        $sth->execute();
+        // $query = "UPDATE Articles SET quantite = quantite - :quantite WHERE id_art = :id_art";
+        // $sth = $conn->prepare($query);
+        // $sth->bindParam(":id_art", $id_art, PDO::PARAM_INT);
+        // $sth->bindParam(":quantite", $quantite, PDO::PARAM_INT);
+        // $sth->execute();
     }
 
     // Supprimer le panier apres avoir passe la commande

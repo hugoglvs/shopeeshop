@@ -61,6 +61,9 @@ HTML;
     }
     ?>
     </main>
-<?php include_once 'includes/footer.php' ?>
+<?php 
+include_once 'includes/footer.php';
+include_once 'includes/chat.php' 
+?>
 </body>
 </html>

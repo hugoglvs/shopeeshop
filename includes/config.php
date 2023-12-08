@@ -19,9 +19,9 @@ function getDB(){
 $conn = getDB();
 
 // Website URL and path
-define('SITE_URL', 'http://localhost:8888/goncalves/');
+define('SITE_URL', 'http://localhost:8080/goncalves/');
 define('SITE_NAME', 'ShopeeShop');
-define('SITE_PATH', $_SERVER['DOCUMENT_ROOT'].'/goncalves/');
+define("SITE_PATH", $_SERVER['DOCUMENT_ROOT'].'/goncalves/');
 
 // Error handling
 error_reporting(E_ALL);

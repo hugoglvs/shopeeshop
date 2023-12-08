@@ -9,6 +9,12 @@ if (!isset($_SESSION['client'])) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['csrf_token']) {
+        echo "Invalid token";
+        exit;
+    }}
+
 
 $query = "SELECT Commandes.id_commande, Commandes.id_art, Articles.nom, Articles.prix, Commandes.quantite, Commandes.envoi
           FROM Commandes
@@ -55,5 +61,9 @@ HTML;
         ?>
     </table>
 </main>
+<?php 
+include_once 'includes/footer.php';
+include_once 'includes/chat.php' 
+?>
 </body>
 </html>

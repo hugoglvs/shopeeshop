@@ -29,7 +29,7 @@ HTML;
     // Vérifiez si l'utilisateur est connecté avant d'afficher le formulaire
     if (isset($_SESSION['client']) && isset( $_SESSION['csrf_token'])) {
         echo <<<HTML
-        <form action="ajouter.php" method="POST">
+        <form method="POST">
             <input type="hidden" name="article_id" value="{$article['id_art']}">
             <div class="quantity-select">
                 <label for="quantie">Selectionner la quantité:</label>
@@ -50,20 +50,25 @@ HTML;
 </div>
 </main>
 <?php include_once '../includes/footer.php' ?>
-<?php include_once "../includes/chat.php"?>
 
 <script>
     $(document).ready(function () {
         $(".response").hide();
         $("form").on("submit", function (e) {
+            console.log(e)
             e.preventDefault();
             $.ajax({
                 url: "ajouter.php",
                 type: "POST",
                 data: $(this).serialize(),
                 success: function (response) {
+                        console.log(response);
                         $(".response").html(response);
                         $(".response").show();
+                },
+                failure: function () {
+                    $(".response").html("Problème d'ajout au panier");
+                    $(".response").show();
                 }
             });
         });

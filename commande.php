@@ -18,11 +18,7 @@ if (isset($_SESSION["panier"])) {
     }
 }
 
-// // Faire une vérification contre les attaques par ‘POST’
-// if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-//  echo 'Invalid request';
-//  exit;
-// }
+
 $checkout_session = $stripe->checkout->sessions->create([
  'customer' => $_SESSION['client']['id_stripe'],
  // A changer selon le port qu'ecoute votre serveur
