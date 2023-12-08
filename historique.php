@@ -36,19 +36,20 @@ $all = $sth->fetchAll();
             <th>ID Commande</th>
             <th>ID Article</th>
             <th>Nom de l'Article</th>
-            <th>Prix</th>
+            <th>Prix total</th>
             <th>Quantité Commandée</th>
             <th>État de la Commande</th>
         </tr>
         <?php
         if (!empty($all)) {
             foreach($all as $row) {
+                $prixTotal = $row['prix']*$row['quantite'];
                 echo <<<HTML
                 <tr>
                     <td>$row[id_commande]</td>
                     <td>$row[id_art]</td>
                     <td>$row[nom]</td>
-                    <td>$row[prix]</td>
+                    <td>$prixTotal</td>
                     <td>$row[quantite]</td>
 HTML;
                 echo '<td>'.($row['envoi'] ? "Envoyée" : "Non Envoyée").'</td>';

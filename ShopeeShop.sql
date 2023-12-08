@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2023 at 01:05 AM
+-- Generation Time: Dec 08, 2023 at 08:47 PM
 -- Server version: 8.1.0
 -- PHP Version: 8.2.12
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Articles` (
   `id_art` int NOT NULL,
+  `id_stripe` varchar(55) NOT NULL,
   `nom` varchar(25) NOT NULL,
   `quantite` int NOT NULL,
   `prix` float NOT NULL,
@@ -40,10 +41,10 @@ CREATE TABLE `Articles` (
 -- Dumping data for table `Articles`
 --
 
-INSERT INTO `Articles` (`id_art`, `nom`, `quantite`, `prix`, `url_photo`, `description`) VALUES
-(1, 'iPhone 15 Pro', 542575, 1229, 'images/iphone.png', 'Nouvel iPhone 15 Pro, Design en titane\r\nFace avant Ceramic Shield\r\nDos en verre mat texturé'),
-(2, 'Plante verte', 5490490, 49.99, 'images/plante-verte.png', 'Jolie plante verte toute en plastique, ne demande pas d\'entretien'),
-(3, 'Google Pixel 7 Pro', 1345768, 899, 'images/pixel.png', 'Le Google Pixel le plus puissant à ce jour.\r\nUn design élégant conçu avec des matériaux recyclés11.\r\nGoogle Tensor G2, pour encore plus de puissance8.\r\nLe module photo professionnel de Google.');
+INSERT INTO `Articles` (`id_art`, `id_stripe`, `nom`, `quantite`, `prix`, `url_photo`, `description`) VALUES
+(1, 'price_1OKSLpGL1HwwBRENLSuSqrBM', 'Ane', 181, 1229, 'images/donkey.png', 'Bel âne, bien monté, carrosserie grise. 3 chevaux. Gentil. 5 carottes / 100km.'),
+(2, 'price_1OKi2bGL1HwwBRENTyJqM8Dh', 'Panda', 510, 8750, 'images/pandas.png', 'Panda, maîtrise le Kung-Fu. Pelage mixte noir/blanc. 830kg. Parle Espagnol et Mandarin. Casier judiciaire vierge.'),
+(3, 'price_1OKi4wGL1HwwBRENmF6qjC0L', 'Baleine', 5, 5, 'images/whale.png', 'Reconditionné, état presque neuf. Exclusivité mondiale. Peinture d\'origine. Garantie constructeur 3ans reconductible + prime à la casse. Mange bien. Nageoires non incluses. Braconné par nos soins à l\'Odysseum.');
 
 -- --------------------------------------------------------
 
@@ -53,6 +54,7 @@ INSERT INTO `Articles` (`id_art`, `nom`, `quantite`, `prix`, `url_photo`, `descr
 
 CREATE TABLE `Clients` (
   `id_client` int NOT NULL,
+  `id_stripe` varchar(55) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `adresse` text NOT NULL,
@@ -65,19 +67,17 @@ CREATE TABLE `Clients` (
 -- Dumping data for table `Clients`
 --
 
-INSERT INTO `Clients` (`id_client`, `nom`, `prenom`, `adresse`, `numero`, `mail`, `mdp`) VALUES
-(1, 'Thomas', 'Pasquet', '124 rue des tournefeuilles', 643981224, 'thomas.pasquet@gmail.com', '$2y$10$VjXAJaQBh4WubQLOUJOLKeCsXz5aO8DPv.M0XlgUEwTlIKwFWPNAy'),
-(2, 'Gonçalves', 'Hugo', '3 rue Charles Didion', 643381055, 'hugoglvs@icloud.com', '$2y$10$gTy80P.kqMSfXDaytd0U7.0zPGQceAj8hwEAUsM.FHRYuHrBoZCie'),
-(3, 'Thomas', 'Bergerac', '3 Rue du Vigneron', 632019345, 'thomas.vigneron@gmail.com', '$2y$10$ThjnTpDCLI.Ba0SMWhQQIuze/vbzAR3bXFJcbj4TjshOXl7OQrIem'),
-(6, 'Triozon', 'Lucas', '1 rue de la Méridienne', 766666666, 'legendre.trois.dimensions@gmail.com', '$2y$10$N6mUXeogBlYL9EAl9Sv5LudLq741ZCGkeqrOmUpq6/cZEcTL7FLta'),
-(7, 'Bogneron', 'Bobby', '3 Rue des Boules', 603040054, 'bobbylamenace@outlook.fr', '$2y$10$p0lHOraNZgNuZzHDWUwMgO91g.sX5neXY2EuKMBxo.K1URsVUtStG'),
-(8, 'Nom', 'Prenom', 'Adresse', 612345678, 'test@gmail.com', '$2y$10$ysm9ZwpGToLVlb4ZkIHd7.OnX8ORhUSuwzh90oDpGstcL1AK/K/tG'),
-(9, 'Benmouloud', 'Mehdi', '125 rue du couscous', 626497056, 'eat.lair@gmail.com', '$2y$10$8u/u0SSh1zICbnoCOa37FOXIvXuCfiQZx8MV0YPoaQRdsGlAgsove'),
-(10, 'Lousignan', 'Louise', '69 chemin des coquelicots', 987654321, 'louise@yahoo.fr', '$2y$10$zJ8e0JBHbpgJB8PqRsmeB.JNafZ5lUflWQlL6e2Ekl6eD4o3wye.q'),
-(11, 'yaha', 'yoho', 'zed', 1234098765, 'louise@yahoo.fr', '$2y$10$MeZyflMrEzJuIy491jVl9eT8HpOMP02v0dJ2y75uKnzj0vdCBLRuy'),
-(12, 'dcd', 'zdsxd', 'dss', 1234567890, 'louise@yahoo.f', '$2y$10$ju0x4xZ0IlbzlBsd8STH/eSiNKR4adOtH3gEtehoyntiU8vWl6t2e'),
-(13, 'b', 'gj', 'klj', 987651455, 'louise@ya.c', '$2y$10$73uw5m.tRnqK9bQPKJc5SOxLTmjv/JfDLIbu0UTFDzeAG6PUGauiu'),
-(15, 'dc', 'dqs', 'dqwx', 987133412, 'dseda@fd.fr', '$2y$10$zdPg/qd2QnU4I.IG9V6tDum38fWFnQQafNQ8F/9DywtkLuxTHG5ra');
+INSERT INTO `Clients` (`id_client`, `id_stripe`, `nom`, `prenom`, `adresse`, `numero`, `mail`, `mdp`) VALUES
+(2, 'cus_P96vB7x2cRwWAt', 'Gonçalves', 'Hugo', '3 rue Charles Didion', 643381055, 'hugoglvs@icloud.com', '$2y$10$gTy80P.kqMSfXDaytd0U7.0zPGQceAj8hwEAUsM.FHRYuHrBoZCie'),
+(6, 'cus_P96wV1b1a0mzBw', 'Triozon', 'Lucas', '1 rue de la Méridienne', 766666666, 'legendre.trois.dimensions@gmail.com', '$2y$10$N6mUXeogBlYL9EAl9Sv5LudLq741ZCGkeqrOmUpq6/cZEcTL7FLta'),
+(8, 'cus_P96wX9rlL1oMCV', 'Nom', 'Prenom', 'Adresse', 612345678, 'test@gmail.com', '$2y$10$ysm9ZwpGToLVlb4ZkIHd7.OnX8ORhUSuwzh90oDpGstcL1AK/K/tG'),
+(9, 'cus_P96xnuNu1IjqZc', 'Benmouloud', 'Mehdi', '125 rue du couscous', 626497056, 'eat.lair@gmail.com', '$2y$10$8u/u0SSh1zICbnoCOa37FOXIvXuCfiQZx8MV0YPoaQRdsGlAgsove'),
+(10, 'cus_P8l6BFBGRGifJH', 'Lousignan', 'Louise', '69 chemin des coquelicots', 987654321, 'louise@yahoo.fr', '$2y$10$zJ8e0JBHbpgJB8PqRsmeB.JNafZ5lUflWQlL6e2Ekl6eD4o3wye.q'),
+(16, 'cus_P8lnq5Ak2kZu45', 'edqs', 'rzd', 'rzd', 608785884, 'loue@yao.fr', '$2y$10$1TcGCqmajKwNikguJjbBiuBz/sTj6H5sYMHKV6RLoCpLX5OGjhutG'),
+(17, 'cus_P8lnDFj3hXEmYX', 'edzs', 'fed', 'ed', 1234567890, 'lose@yafffhoo.fr', '$2y$10$TykxORYBsSGFVu9DvWFN1erR1YLWlL7pfIX91YwmPUhQE5hQ.X4NW'),
+(18, 'cus_P8m2Hq7TE6x8Vl', 'eazdqs', 'ezsd', 'ezds', 923142981, 'edadzlkn@mm.fr', '$2y$10$R6LjEmghWIUqLJfiTtgx4eMtiuRuBoM/miFA9PPpjMkmS/iFXeNxy'),
+(19, 'cus_P8m38hfiBFKz7n', 'Benosmane', 'Yacine', 'Leucate', 782888717, 'ya.benosmane@gmail.com', '$2y$10$r7wTvHInVW4/JhKe7l66/u.zFM1Yqbwk0mhdWB4Ku0/X2eVA6j0MG'),
+(20, 'cus_P9JnNiGylEAflm', 'Mohamedatni', 'Aya', '1 rue Tort ', 618888415, 'aya@gmail.com', '$2y$10$tu76oJQVVPrlMfXwFYMlMubNY.Fh94C/mfBSHlm6Eo4PhNN0ROblu');
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,32 @@ INSERT INTO `Commandes` (`id_commande`, `id_art`, `id_client`, `quantite`, `envo
 (9, 1, 8, 1, 0),
 (10, 1, 9, 80, 0),
 (11, 3, 9, 794220, 0),
-(12, 1, 8, 1, 0);
+(12, 1, 8, 1, 0),
+(13, 1, 8, 1, 0),
+(14, 1, 10, 10, 0),
+(15, 1, 10, 4, 0),
+(16, 1, 19, 2, 0),
+(17, 1, 19, 4, 0),
+(18, 3, 19, 4, 0),
+(19, 2, 19, 4, 0),
+(20, 1, 19, 4, 0),
+(21, 3, 19, 5, 0),
+(22, 2, 19, 3, 0),
+(23, 1, 19, 8, 0),
+(24, 2, 19, 10, 0),
+(25, 2, 19, 8, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Messages`
+--
+
+CREATE TABLE `Messages` (
+  `content` text NOT NULL,
+  `id_client` int NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -144,13 +169,13 @@ ALTER TABLE `Articles`
 -- AUTO_INCREMENT for table `Clients`
 --
 ALTER TABLE `Clients`
-  MODIFY `id_client` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_client` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `Commandes`
 --
 ALTER TABLE `Commandes`
-  MODIFY `id_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables

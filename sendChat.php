@@ -10,7 +10,6 @@ if (!($_POST['token'] === $_SESSION['csrf_token'])) {
 
 $userId = $_SESSION['client']['id_client'];
 $message = $_POST['message'];
-echo $message." ".$userId;
 
 function isMessageValid(string $message) {
   return strlen($message) && $message != "";
@@ -28,3 +27,4 @@ function sendChat(int $userId, string $message){
 if (isMessageValid($message)) {
   sendChat($userId, $message);
 }
+

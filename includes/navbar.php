@@ -1,13 +1,12 @@
 <nav>
     <div class="menu_bar">
         <a href="index.php" title="Logo" class="logo">
-            <!-- <img class="logo" src="images/logo.png" alt="Logo"> -->
             <img class="logo" src="images/svg/shopeeshop.svg" alt="Logo">
         </a>
         <ul class="navigation">
             <li><a href="index.php">Accueil</a></li>
             <li><a href="contact/contact.php">Contact</a></li>
-            <li><a href="../phpmyadmin" target="_blank">Phpmyadmin</a></li>
+            <!-- <li><a href="../phpmyadmin" target="_blank">Phpmyadmin</a></li> -->
         </ul>
     </div>
     <div class="action-buttons">

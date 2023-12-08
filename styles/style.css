@@ -1,65 +1,8 @@
-/* Reset some default browser styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-/* Style the container */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f4f4f4;
-}
-
-/* Style the form */
-.registration-form {
-  max-width: 400px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-.registration-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Style form elements */
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  font-weight: bold;
-  display: block;
-}
-
-input[type=text],
-input[type=email],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-button {
-  background-color: #007BFF;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #0056b3;
+  white-space: normal;
 }
 
 header.hero {
@@ -91,7 +34,7 @@ footer {
   display: block;
   width: 100%;
   height: 30px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   text-align: center;
   padding-bottom: 40px;
@@ -114,6 +57,14 @@ img {
   float: left;
   height: 400px;
   width: auto;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container p {
+  margin: 130px 0;
 }
 
 a {
@@ -165,6 +116,15 @@ table td:first-child a, table td:first-child a:active, table td:first-child a:vi
 }
 table td:first-child a:hover, table td:first-child a:active:hover, table td:first-child a:visited:hover, table td:first-child a:hover:hover {
   color: #007bff;
+}
+
+#register {
+  background-color: #F3EFF5;
+  padding: 5vh 8vw;
+  margin-left: 35vw;
+  width: 30vw;
+  border-radius: 20px;
+  border: #24292F 3px solid;
 }
 
 body {

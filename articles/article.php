@@ -3,6 +3,7 @@ $title = "Article";
 require_once "../includes/config.php";
 require_once "../includes/head.php";
 include_once "../includes/navbar.php";
+include_once "../includes/chat.php";
 $id_art = $_GET['id_art'];
 
 $query = 'SELECT * FROM Articles WHERE id_art= :id_article';
@@ -74,5 +75,6 @@ HTML;
         });
     });
 </script>
+
 </body>
 </html>

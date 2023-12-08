@@ -6,6 +6,13 @@ require_once('stripe.php');
 
 $commande = array();
 
+// Faire une vérification contre les attaques par ‘POST’
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    echo 'Invalid request';
+    exit;
+}
+
+
 if (isset($_SESSION["panier"])) {
     $sth = $conn->prepare("SELECT * FROM Articles WHERE id_art = :id_art");
     foreach ($_SESSION["panier"] as $article) {

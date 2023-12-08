@@ -642,3 +642,18 @@ Error: [0] isMessageValid(): Argument #1 ($message) must be of type string, null
 Error: [HY000] SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 13
 Error: [HY000] SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 13
 Error: [HY000] SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'numero' at row 1 in /Users/hugogoncalves/Developer/websites/goncalves/enregistrement.php on line 13
+Error: [0] Undefined constant "prix" in /Users/hugogoncalves/Developer/websites/goncalves/historique.php on line 51
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/articles/article.php on line 77
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/articles/article.php on line 77
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1
+Error: [0] Failed opening required 'includes/config.php' (include_path='.:/opt/homebrew/Cellar/php/8.2.12/share/php/pear') in /Users/hugogoncalves/Developer/websites/goncalves/includes/chat.php on line 1

@@ -1,4 +1,4 @@
-<?php require_once "includes/config.php"?>
+<?php require_once "config.php"?>
 
 <div id="chat-bubble">
     <img src="images/chat.png" alt="">
@@ -8,7 +8,7 @@
     <div id="chat-body">
         <div id="chat-log"></div>
         <?php
-        if (isset($_SESSION['client']) && isset( $_SESSION['csrf_token'])) {
+        if (isset($_SESSION['client'])) {
             echo <<<HTML
             <input type="text" id="chat-input" placeholder="Tapez votre message...">
             <input type="hidden" id="token" name="token" value="{$_SESSION['csrf_token']}">
@@ -23,13 +23,14 @@ HTML;
 
 <script>
 $(document).ready(() => {
-    setInterval(updateChat, 100);
+    setInterval(updateChat, 1000);
     $("#chat-send-btn").on("click", sendMessage);
     $("#chat-input").on("keypress", (event) => {
         if (event.key === "Enter") {
             sendMessage()
     }
-    });
+});
+
     $("#chat-bubble").on("click", () => {
         $("#chat-bubble").hide();
         $("#chat-box").show();
