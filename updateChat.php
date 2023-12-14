@@ -45,7 +45,10 @@ function deleteChat() {
 function displayChat(array $chat) {
   foreach($chat as $message) {
     $author = getAuthorName($message['id_client']);
+
+    // Protection XSS
     $content = htmlspecialchars($message['content']);
+    
     $time = $message['time'];
     echo <<<HTML
     <span class="time">[$time]</span><br>

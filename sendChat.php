@@ -2,11 +2,22 @@
 
 require_once "includes/config.php";
 
+if (!($_SERVER['REQUEST_METHOD'] == 'POST')) {
+  header('Location:index.php');
+  exit;
+}
+
+if (!isset($_SESSION['client'])) {
+  header('Location:connexion.php');
+  exit;
+}
+
 // Vérifie que le jeton CSRF est présent et correct
-if (!($_POST['token'] === $_SESSION['csrf_token'])) {
+if (!($_POST['token'] == $_SESSION['csrf_token'])) {
   header('Location: index.php');
   exit("Token CSRF invalide");
 }
+
 
 $userId = $_SESSION['client']['id_client'];
 $message = $_POST['message'];

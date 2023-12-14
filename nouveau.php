@@ -103,9 +103,7 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
                             window.location.href = "index.php";
                         }, 1000);
                     } else {
-                        // Affiche un message d'erreur spécifique
-                        // $("#message").text("Une erreur s'est produite lors de la création du compte.").removeClass("success").addClass("error").show();
-                        $("message").text(response).show();
+                        $("#message").text(response).show();
                     }
                 },
             });
@@ -124,7 +122,7 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
     function validateNom() {
         var nom = $("input[id='n']");
         if (nom.val() === "") {
-            nom.css("background-color", "white");
+            nom.css("background-color", "red");
             $("#nomError").text("Le nom est obligatoire.").show();
             isValid.nom = false;
         } else {
@@ -137,7 +135,7 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
         function validatePrenom() {
             var prenom = $("input[id='p']");
             if (prenom.val() === "") {
-                prenom.css("background-color", "white");
+                prenom.css("background-color", "red");
                 $("#prenomError").text("Le prenom est obligatoire.").show();
                 isValid.prenom = false;
             } else {
@@ -150,7 +148,7 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
         function validateAdresse() {
             var adresse = $("input[id='adr']");
             if (adresse.val() === "") {
-                adresse.css("background-color", "white");
+                adresse.css("background-color", "red");
                 $("#adresseError").text("L'adresse est obligatoire.").show();
                 isValid.adresse = false;
             } else {
@@ -165,7 +163,7 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
             // Faudrait penser à faire un cours un jour sur les regex c'est pas mal
             var numeroRegex = /^[0-9]{10}$/;
             if (!numeroRegex.test(numero.val())) {
-                numero.css("background-color", "white");
+                numero.css("background-color", "red");
                 $("#numeroError").text("Numéro invalide.").show();
                 isValid.numero = false;
             } else {
@@ -178,12 +176,15 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
         function validateEmail() {
             var email = $("input[id='mail']");
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            console.log("Checking email");
             if (!emailRegex.test(email.val())) {
-                email.css("background-color", "white")
+                email.css("background-color", "red")
                 $("#emailError").text("Format d'email invalide.").show();
                 isValid.email = false;
-            } else if (emailAlreadyExist(email.val())) {
+            } else if (emailAlreadyExist(email.val().trim())) {
                 isValid.email = false;
+                $("#emailError").text("Cette adresse email est déjà utilisée.").show();
+                email.css("background-color", "red")
             } else {
                 $("#emailError").hide();
                 email.css("background-color", "lightgreen")
@@ -196,10 +197,10 @@ $email = isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "";
             $.ajax({
                 url: "checkEmail.php",
                 type: "POST",
-                async: true,
+                async: false,
                 data: {mail: email},
                 success: function (response) {
-                    result =  (response == "1")
+                    result =  (response == 1)
                 }
             });
             return result;

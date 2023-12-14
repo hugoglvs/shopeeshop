@@ -46,14 +46,14 @@ function updateChat() {
     $.ajax({
         type: "POST",
         url: "<?=SITE_URL."updateChat.php"?>",
-        success: function (response) {
+    },
+    success: function (response) {
             if (response.length > 0){
                 $("#chat-log").html(response)
             } else {
                 $("#chat-log").html("Aucun message pour le moment")
             }
-        },
-    });
+        });
 }
 
 function sendMessage() {

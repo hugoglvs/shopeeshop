@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sth->bindParam(":mail", $mail);
     $sth->execute();
     $client = $sth->fetch();
+    
     if ($client && password_verify($mdp, $client["mdp"])) {
         // L'utilisateur est connecté avec succès
         $_SESSION['client'] = $client;
